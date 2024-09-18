@@ -1,0 +1,72 @@
+<?php
+// Base Vehicle class
+class Vehicle {
+    protected $make;
+    protected $model;
+    protected $year;
+
+    public function __construct($make, $model, $year) {
+        $this->make = $make;
+        $this->model = $model;
+        $this->year = $year;
+    }
+
+    public function getDetails() {
+        return "{$this->year} {$this->make} {$this->model}";
+    }
+
+    public function describe() {
+        return "This is a vehicle.";
+    }
+}
+
+// Car class inheriting from Vehicle
+class Car extends Vehicle {
+    public function describe() {
+        return "This is a car with 4 doors.";
+    }
+}
+
+// Motorcycle class inheriting from Vehicle
+class Motorcycle extends Vehicle {
+    public function describe() {
+        return "This is a motorcycle.";
+    }
+}
+
+// ElectricCar class inheriting from Car
+class ElectricCar extends Car {
+    public function describe() {
+        return "This is an electric car.";
+    }
+
+    public function chargeBattery() {
+        return "The battery is being charged.";
+    }
+}
+
+// Create instances of the vehicles
+$car = new Car('Toyota', 'Camry', 2020);
+$motorcycle = new Motorcycle('Harley-Davidson', 'Sportster', 2021);
+$electricCar = new ElectricCar('Tesla', 'Model 3', 2022);
+
+// Output details and descriptions
+echo $car->getDetails() . "\n";
+echo $car->describe() . "\n\n";
+
+echo $motorcycle->getDetails() . "\n";
+echo $motorcycle->describe() . "\n\n";
+
+echo $electricCar->getDetails() . "\n";
+echo $electricCar->describe() . "\n";
+echo $electricCar->chargeBattery() . "\n";
+?>
+
+
+
+
+The code begins by defining a base class, Vehicle, which encapsulates common properties such as make, model, and year. The constructor initializes these properties, and the getDetails method returns a formatted string representing the vehicle's details. The describe method provides a generic description of the vehicle.
+
+Two subclasses, Car and Motorcycle, extend the Vehicle class, each overriding the describe method to provide specific descriptions. Furthermore, the ElectricCar class inherits from Car, adding a unique method, chargeBattery, which simulates charging the vehicle's battery.
+
+Instances of Car, Motorcycle, and ElectricCar are created, and their details and descriptions are outputted using the getDetails and describe methods. This structure exemplifies the use of inheritance to promote code reuse and specialization in object-oriented programming.
